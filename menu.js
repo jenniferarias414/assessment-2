@@ -121,11 +121,19 @@ const foodArr = [
 //CODE HERE
 
 // const filteredFood = foodArr.filter(/* CALLBACK HERE */)
-const filteredFood = foodArr.filter(function(el) {
-    return el === foodArr.tags.includes('healthy')
-})
+// const filteredFood = foodArr.filter(function(el) {
+//     return el === foodArr.tags.includes('healthy')
+// })
 
-const healthyFood = filteredFood()
+// const healthyFood = filteredFood()
+
+const filterHealthyFood = (food) => {
+    return food.tags.includes('healthy')
+}
+
+const healthyFood = foodArr.filter(filterHealthyFood)
+
+console.log(healthyFood)
 //////////////////PROBLEM 5////////////////////
 /* 
     Now let's write a function that's a little
@@ -166,6 +174,19 @@ const healthyFood = filteredFood()
 */
 
 //CODE HERE
+const filterByProperty = (property, num, type) => {
+    let filteredArr = []
+    if ( type === 'above') {  //above must be a string
+        filteredArr = foodArr.filter(food => food[property] > num) //use filter method to filter foodArr
+    } else if (type === 'below') {
+        filterArr = foodArr.filter(food => food[property] < num)
+    }
+    return filteredArr  //return filtered array from entire fxn
+    }
+    // console.log(filterByProperty('rating', 11, 'above'))
+
+    const aboveRating11 = filterByProperty('rating', 11, 'above')
+    console.log(aboveRating11)
 
 
 /*
@@ -176,3 +197,8 @@ const healthyFood = filteredFood()
 */
 
 //CODE HERE
+const abovePrice4 = filterByProperty('price', 4, 'above')
+    console.log(abovePrice4)
+
+const belowPopularity5 = filterByProperty('popularity', 5, 'below')
+console.log(belowPopularity5)
